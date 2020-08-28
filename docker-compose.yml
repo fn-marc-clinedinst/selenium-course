@@ -3,9 +3,9 @@ version: "3"
 services:
   database:
     environment:
-      - POSTGRES_DB=my-cool-database
-      - POSTGRES_PASSWORD=tony.is.my.enemy
-      - POSTGRES_USER=just.kidding.tony.you.are.a.cool.dude.i.guess
+      - POSTGRES_DB=database-name
+      - POSTGRES_PASSWORD=database-password
+      - POSTGRES_USER=database-user
     image: postgres:12.0-alpine
     ports:
       - 5432:5432
