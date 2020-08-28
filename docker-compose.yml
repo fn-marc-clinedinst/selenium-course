@@ -23,6 +23,8 @@ services:
       - hub
     environment:
       - HUB_HOST=hub
+    volumes:
+      - /dev/shm:/dev/shm
 
   firefox:
     image: selenium/node-firefox:3.14
@@ -30,6 +32,8 @@ services:
       - hub
     environment:
       - HUB_HOST=hub
+    volumes:
+      - /dev/shm:/dev/shm
 
 
 volumes:
