@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  database:
+    environment:
+      - POSTGRES_DB=my-cool-database
+      - POSTGRES_PASSWORD=tony.is.my.enemy
+      - POSTGRES_USER=just.kidding.tony.you.are.a.cool.dude.i.guess
+    image: postgres:12.0-alpine
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+  hub:
+    image: selenium/hub:3.14
+    ports:
+      - 4444:4444
+
+  chrome:
+    image: selenium/node-chrome:3.14
+    depends_on:
+      - hub
+    environment:
+      - HUB_HOST=hub
+
+  firefox:
+    image: selenium/node-firefox:3.14
+    depends_on:
+      - hub
+    environment:
+      - HUB_HOST=hub
+
+
+volumes:
+  postgres_data:
